@@ -12,9 +12,16 @@ public class Hello {
     a.method();
   }
 
+  void mayCauseNPE() {
+    Random rng = new Random();
+    Pointers.A a = Pointers.mayReturnNull(rng.nextInt());
+    a.method();
+  }
+
   public static void main(String[] args) {
     Hello myHello = new Hello();
     myHello.doesNotCauseNPE();
+    myHello.mayCauseNPE();
     System.out.println("Hello world!");
   }
 
